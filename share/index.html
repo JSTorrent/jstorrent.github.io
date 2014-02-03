@@ -1,5 +1,41 @@
-Share page! Add some javascript here for inline install and stuff
+<h3>JSTorrent share page</h3>
+<h4>Share this URL with a friend!</h4>
+
+<p>Share page! I will hopefully make this prettier and do inline auto install detection of JSTorrent Lite (free)
+so that you can share torrents with other people who have Chrome and have it be easy
+</p>
+
+
+<span id="info"></span>
+
 
 <script>
-document.write(window.location.hash)
+
+var hash = window.location.hash.slice(1,window.location.hash.length)
+var parts = hash.split('&')
+var args = {}
+for (var i=0; i<parts.length; i++) {
+  var kv = parts[i].split('=')
+  args[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1])
+}
+console.log(args)
+if (navigator.userAgent.match(/chrome/i)) {
+  document.getElementById('info').innerText = JSON.stringify( args )
+
+} else {
+  document.getElementById('info').innerText = 'Need Chrome to use JSTorrent';
+}
+
+
+  if (args.magnet_uri) {
+    document.write('<h3>Here is the magnet link:</h3>')
+    document.write('<a href="'+args.magnet_uri+'">magnet link</a>')
+  }
+
+
+
+</script>
+
+<script>
+
 </script>
