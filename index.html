@@ -1,42 +1,254 @@
 <html>
 <head>
 
-<link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/anhdpjpojoipgpmfanmedjghaligalgb">
-<title>JSTorrent</title>
+<link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/jstorrent/anhdpjpojoipgpmfanmedjghaligalgb">
+<link rel="stylesheet" href="css/main.css" type="text/css"/>
+<script src="js/smooth.pack.js"></script>
+<title>JSTorrent, a Torrent Client for Google Chrome</title>
 </head>
 
 <body>
 
-<p>Welcome to JSTorrent.com. A place for things</p>
+<div id="header">
+    <div class="wrap">
+        <a class="logo" href="#top"></a>
+        <div class="menu">
+            <a href="#about">About</a>
+            <a href="#news">News</a>
+            <a href="#contribute">Contribute</a>
+            <a href="#download">Download</a>
+            <a href="#links">Quick Links</a>
+        </div>
+        <form class="menu-dropdown">
+            <select onchange="location = this.options[this.selectedIndex].value;">
+                <option value="#about">About</option>
+                <option value="#news">News</option>
+                <option value="#contribute">Contribute</option>
+                <option value="#download">Download</option>
+                <option value="#links">Quick Links</option>
+            </select>
+        </form>
+    </div>
+    <div class="shadow"></div>
+</div> <!-- /header -->
 
 
+<div class="header-placeholder"></div>
 
 
-<h2><a href="#" id="inline-install">Install the App</a></h2>
+        <div class="grid-gplus leadin">
+    <div class="wrap">
+        <img src="images/js-256.png" alt=""/>
+        <ul class="text-block">
+            <li><h1><strong>JSTorrent</strong> is a Torrent Client</h1></li>
+            <li><h1>for <strong>Google Chrome</strong></h1></li>
+            <li><h1>written in pure <strong>JavaScript</strong></h1></li>
+        </ul>
+        <div class="button-container">
+            <a class="button" href="https://chrome.google.com/webstore/detail/jstorrent/anhdpjpojoipgpmfanmedjghaligalgb">DOWNLOAD<label>JSTorrent version 2.1.2</label></a>
+        </div>
+    </div>
+</div>
 
-<script src="jstorrent.install.js">
+<a class="scroll-point pt-about" name="about"></a>
+<div class="wrap">
+    <h2 class="icon icon-about">About JSTorrent</h2>
+    <p>
+    <span style="margin-top:1em; float:right">
+<a href="https://chrome.google.com/webstore/detail/jstorrent/anhdpjpojoipgpmfanmedjghaligalgb">
+      <img src="images/cws_badge_206x58.png" />
+</a>
 
-</script>
+    </span>
+JSTorrent is a BitTorrent client for Google Chrome that downloads torrent files with ease. It can download torrents directly to your Downloads folder and can handle large files (multi-gigabyte files) with ease. It is designed specifically for Google ChromeOS and runs fine on lower end ARM Chromebooks.
 
 
-<!--h2>JSTorrent (Revived?)!</h2>
-<p>Due to licensing issues, I have had to take JSTorrent out of the chrome web store. To voice support for a rewrite for now visit the <a href="https://github.com/kzahel/jstorrent">github page</a></p-->
+    </p>
 
-<ul>
-<li><a href="https://github.com/kzahel/jstorrent">jstorrent on github</a></li>
+          See what users are saying about the app
+<ul class="quotes">
+  <li>"This is so worth it especially if you have a chromebook. Incredible!"</li>
+  <li>"Works wonderfully, only app of its kind for chrome."</li>
+  <li>"i like it a lot. a use it everyday on my chromebook and never had any problem. very neat app."</li>
+  <li>"Love this app! Use to use Utorrent on my other laptop but now I have found this app I don't need to be using my other laptop no more. Well worth the money and I would recommend it to anyone who is using a Chromebook!"</li>
+  <li>"definitely worth it. i'm really glad i found an app to replace uTorrent for my chromebook"</li>
+  <li>"Amazeballs. Working well on an Acer c720 Chromebook, nearly runs as fast as uTorrent.. Actually pretty insane to be honest, amazing app."</li>
+  <li>"It works great, it's easy to use."</li>
+  <li>"This latest version is working really well on my Chromebook. This pretty much means I am close to no longer needing my Linux laptop. Way to go jstorrent team."</li>
 
-<li><a href="https://chrome.google.com/webstore/detail/jstorrent/anhdpjpojoipgpmfanmedjghaligalgb">JSTorrent Chrome web store app</a></li>
+  <li>"Love it. Makes me enjoy my new Chromebook even more."</li>
+  <li>"Essential app"</li>
 
-<li><a href="http://kyle.graehl.org">kyle's blog</a></li>
 
-<li><a href="https://github.com/kzahel">kyle's github</a></li>
-<li><a href="https://chrome.google.com/webstore/detail/privacy-guard/edcajbacgdcdeecojhlllbgingbjfbmk">Privacy Guard chrome extension</a> (and corresponding <a href="http://kyle.graehl.org/javascript/development/chrome-extension/privacy/2014/01/22/privacy-guard-extension.html">blog post</a>)</li>
-<li><a href="passwordmaker">password maker (web site)</a></li>
-<li><a href="https://play.google.com/store/apps/details?id=org.graehl.passwordmaker">password maker android app</a></li>
-<li><a href="https://chrome.google.com/webstore/detail/password-maker/ialikkbbdipamacdpjbjjffohcblhchp">password maker chrome web store app</a></li>
-<li><a href="https://plus.google.com/105605890151842939367" rel="publisher">Google+ page</a></li>
-
+  <li>"When it seemed that Chromebook was limited to web browing and little more, JSTorrent comes in and makes it a very powerful and complete gadget. A must have to all downloaders"</li>
+  <li>"Was use to using utorrent before purchasing a chromebook as my primary laptop. I was happy to find that jstorrent is equally as simple and works just as well. I'm not one to buy apps, but JSTorrent is well worth the measly 2 dollars."</li>
+  <li>"work great on chromebook, totally a most buy if you own one, only 2 box nizzle"</li>
+  <li>"Greatest app ever, it easily doubles the functionality of my chromebook. I don't remember it cost any money when i got it, but i would definitely pay for it. Just as good/better than a full desktop torrent client!"</li>
+  <li>"I know not everyone has a chromebook and it is nice to be able to find a program that simply works, THANK YOU."</li>
+  <li>Read <a href="https://chrome.google.com/webstore/detail/jstorrent/anhdpjpojoipgpmfanmedjghaligalgb/reviews">more reviews</a></li>
 </ul>
+
+
+</div>
+
+
+
+
+<a class="scroll-point" name="news"></a>
+<hr/>
+
+<div class="wrap">
+  <h2>News</h2>
+  <ul class="posts">
+    
+      <li><span>3 Feb 2014</span> &raquo; 2.1.2 release</li>
+
+<pre>
+- Fix several issues with trackers
+  - New option (default off) to report as uTorrent
+  - Information in Help page to give to private tracker admins
+  - See detailed tracker error information in "Trackers" tab
+- Sortable columns (click on column header, note not all columns are sortable)
+- Improvements to setting file priority (skip file download)
+- Add "General Information" pane, to see detailed information about a Torrent
+</pre>
+
+<li><span>18 Jan 2014</span> &raquo; Minor release</li>
+<pre>
+- Miscellaneous bugfixes
+</pre>
+
+
+<li><span>17 Jan 2014</span> &raquo; 2.1 Release</li>
+
+<pre>
+- Ability to select which files to download
+- Private tracker support
+- New works for all public trackers
+- Improved UX and notifications
+- Added some options to the Options page
+  - Number of peers per torrent
+  - Prevent standby
+</pre>
+
+<li><span>21-27 Jan 2014</span> &raquo; Post 2.0 Releases</li>
+<pre>
+ Pushing small bugfixes reported by users. Please, if you have any
+ problems with the program, report the issues and I will address them!
+</pre>
+<li><span>19 Dec 2013</span> &raquo; Version 2.0 Major Release</li>
+<pre>
+ Version 2.0 is released with direct downloads to your disk. If you
+ encounter any issues, please report them here and I will work my best
+ to fix them as soon as possible.
+</pre>
+</ul>
+</div>
+
+
+
+<a class="scroll-point" name="contribute"></a>
+<hr/>
+
+<div class="wrap">
+    <h2 class="icon icon-contribute">Want to Contribute?</h2>
+  <p>
+    JSTorrent is an open source project. Contributions in the form of
+    bug reports, feature requests, or even new code are welcome
+    on the <a href="https://github.com/kzahel/jstorrent">JSTorrent GitHub page</a>.
+  </p>
+
+  <p>This webpage is hosted by GitHub Pages with <a href="https://github.com/JSTorrent/jstorrent.github.io">this repository</a></p>
+
+</div>
+
+
+<a class="scroll-point" name="download"></a>
+<hr/>
+
+<div class="wrap download-pane">
+    <h2 class="icon icon-download">Download</h2>
+
+
+            <a class="button" href="https://chrome.google.com/webstore/detail/jstorrent/anhdpjpojoipgpmfanmedjghaligalgb">DOWNLOAD<label>JSTorrent version 2.1.2</label>
+            <img src="images/cws_badge_206x58.png" /></a>
+
+</div>
+
+<div class="grid">
+    <div class="wrap download-pane">
+        <div class="corner"></div>
+        <br>
+        <br>
+    </div>
+</div>
+
+
+
+
+
+    <a class="scroll-point" name="links"></a>
+<hr/>
+
+<div class="wrap quick-links-pane">
+    <h2 class="icon icon-quick-links">Quick Links</h2>
+    <br/>
+    <ul class="quick-links-header">
+        <li>General</li>
+        <li>Development</li>
+        <li class="last">About</li>
+    </ul>
+    <div class="clear"></div>
+</div>
+
+<div class="grid">
+    <div class="wrap">
+        <div class="list-container">
+            <ul class="list quick-links">
+                <li class="corner"></li>
+                <li><a href="https://chrome.google.com/webstore/detail/jstorrent/anhdpjpojoipgpmfanmedjghaligalgb">JSTorrent Chrome Web Store<span></span></a></li>
+                <li><a href="https://chrome.google.com/webstore/detail/jstorrent-helper-extensio/bnceafpojmnimbnhamaeedgomdcgnbjk">JSTorrent Helper Extension<span></span></a></li>
+                <li><a href="https://plus.google.com/+Jstorrent">JSTorrent on Google+<span></span></a></li>
+                <li><a href="https://twitter.com/jstorrent">JSTorrent on Twitter<span></span></a></li>
+
+            </ul>
+
+            <ul class="list quick-links">
+                <li class="corner"></li>
+                <li><a href="https://github.com/kzahel/jstorrent/blob/fresh/README.md">Documentation<span></span></a></li>
+                <li><a href="https://github.com/kzahel/jstorrent">Source Code<span></span></a></li>
+                <li><a href="https://github.com/kzahel/jstorrent/issues">Issue Tracker<span></span></a></li>
+                <li><a href="https://jstorrent.uservoice.com/">Idea Bank<span></span></a></li>
+            </ul>
+
+            <ul class="list quick-links last">
+                <li class="corner"></li>
+                <li><a href="http://www.graehlarts.com/">Graehl Arts<span></span></a></li>
+                <li><a href="https://chrome.google.com/webstore/detail/privacy-guard/edcajbacgdcdeecojhlllbgingbjfbmk">Privacy Guard<span></span></a></li>
+                <li><a href="http://kyle.graehl.org">Kyle Graehl<span></span></a></li>
+                <!--li><a href="#">Become a Sponsor<span></span></a></li-->
+                
+            </ul>
+
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+
+
+    <hr/>
+<div id="footer">
+    <p>Copyright &copy; 2014 <a href="http://www.graehlarts.com">Graehl Arts</a></p>
+    <a class="closing" href="#top"></a>
+</div>
+
+
+
+
+
+
+
+
 
 </body>
 </html>
