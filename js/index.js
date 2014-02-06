@@ -15,7 +15,7 @@ function onload() {
                 ga('send','event','Clicks','Download', {
                     'hitCallback': function() {
                         console.log('sent clicks download event',evt,_this)
-                        debugger
+                        window.location = _this.href
                     }
                 });
                 evt.preventDefault()
