@@ -14,7 +14,7 @@ function onload() {
                 var _this = this
                 ga('send','event','Clicks','Download', {
                     'hitCallback': function() {
-                        console.log('sent clicks download event',this)
+                        console.log('sent clicks download event',evt,_this)
                         debugger
                     }
                 });
