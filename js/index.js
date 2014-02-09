@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function(event) { 
     onload()
 });
@@ -23,4 +24,12 @@ function onload() {
             });
         }
     }
+
+
+    if (navigator.registerProtocolHandler) {
+        navigator.registerProtocolHandler("magnet",
+                                          "http://jstorrent.com/share/#magnet_uri=%s",
+                                          "JSTorrent");
+    }
+
 }
