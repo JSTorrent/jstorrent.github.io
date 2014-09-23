@@ -8,34 +8,4 @@ so that you can share torrents with other people who have Chrome and have it be 
 
 <span id="info"></span>
 
-
-<script>
-
-var hash = window.location.hash.slice(1,window.location.hash.length)
-var parts = hash.split('&')
-var args = {}
-for (var i=0; i<parts.length; i++) {
-  var kv = parts[i].split('=')
-  args[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1])
-}
-console.log(args)
-if (navigator.userAgent.match(/chrome/i)) {
-  document.getElementById('info').innerText = JSON.stringify( args )
-
-} else {
-  document.getElementById('info').innerText = 'Need Chrome to use JSTorrent';
-}
-
-
-  if (args.magnet_uri) {
-    document.write('<h3>Here is the magnet link:</h3>')
-    document.write('<a href="'+args.magnet_uri+'">magnet link</a>')
-  }
-
-
-
-</script>
-
-<script>
-
-</script>
+<script src="share.js"></script>
