@@ -142,6 +142,15 @@ function checkInstalled() {
 }
 
 function dothings() {
+    if (parsed.magnet_uri) {
+        window.parsed_magnet = parse_magnet(parsed.magnet_uri)
+
+        if (parsed_magnet.dn) {
+            document.title = parsed_magnet.dn + ' torrent download'
+        }
+        
+    }
+
 
     if (window.chrome && chrome.webstore && chrome.webstore.onInstallStageChanged) {
         chrome.webstore.onInstallStageChanged.addListener(function(evt) {
