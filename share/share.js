@@ -1,6 +1,32 @@
 var jstorrent_id = "anhdpjpojoipgpmfanmedjghaligalgb"
 var jstorrent_lite_id = "abmohcnlldaiaodkpacnldcdnjjgldfh"
 
+function parse_magnet(url) {
+    var uri = url.slice(url.indexOf(':')+2)
+    var parts = uri.split('&');
+    var kv, k, v
+    var d = {};
+    for (var i=0; i<parts.length; i++) {
+        kv = parts[i].split('=');
+        k = decodeURIComponent(kv[0]);
+        v = decodeURIComponent(kv[1]);
+        if (! d[k]) d[k] = []
+        d[k].push(v);
+    }
+    if (! d.xt) { return }
+    var xt = d.xt[0].split(':');
+    var hash = xt[xt.length-1];
+
+    // need to make this recognize base32, etc(?)
+/*
+    if (hash.length == 32) {
+        hash = base32tohex(hash)
+    }
+
+    d['hashhexlower'] = hash.toLowerCase()
+*/
+    return d;
+}
 
 function parse_location_hash() {
     var hash = window.location.hash.slice(1,window.location.hash.length)
@@ -111,7 +137,7 @@ function showmag() {
 }
 
 function checkInstalled() {
-    console.log('installed ?', chrome.runtime.sendMessage)
+    console.log('installed ?')
     // check if installed from another tab...
 }
 
@@ -138,6 +164,7 @@ function dothings() {
                                 oninstallfail)
         // start polling to see if they installed in the other tab ...
         window.checkInstalledInterval = setInterval( checkInstalled, 200 )
+        evt.preventDefault()
     })
 
 
