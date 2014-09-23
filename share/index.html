@@ -1,11 +1,25 @@
-<h3>JSTorrent share page</h3>
-<h4>Share this URL with a friend!</h4>
+<html>
+<head>
+<title>JSTorrent Share Page</title>
+</head>
+<body>
 
-<p>Share page! I will hopefully make this prettier and do inline auto install detection of JSTorrent Lite (free)
-so that you can share torrents with other people who have Chrome and have it be easy
-</p>
+<img alt="JSTorrent" src="../images/JS-LOGO-1x.png"></img>
 
+<div id="magnet-div">
+<a style="display:none" href="#" id="magnet-link">magnet link</a>
+</div>
+
+<div id="install-div" style="display:none">
+<a id="click-install" href="#">Install JSTorrent (free)</a>
+<br />
+In order to download the file, you need to install the JSTorrent chrome app (free).
+</div>
 
 <span id="info"></span>
+<span id="status"></span>
 
 <script src="share.js"></script>
+
+</body>
+</html>
