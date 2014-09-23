@@ -45,13 +45,17 @@ function navigateBackMaybe() {
     }, delay * 1000 )
 }
 
-function oninstallresult(result) {
-    console.log('oninstallresult',result)
+function oninstallsuccess(result) {
+    clearInterval(window.checkInstalledInterval)
+    console.log('oninstallsuccess',result)
+}
+function oninstallfail(result) {
+    clearInterval(window.checkInstalledInterval)
+    console.log('oninstallfail',result)
 }
 
 function showInstallButton() {
     notify('showInstallButton')
-
     document.getElementById('install-div').style.display = 'block'
 
 }
@@ -106,13 +110,34 @@ function showmag() {
 
 }
 
+function checkInstalled() {
+    console.log('installed ?', chrome.runtime.sendMessage)
+    // check if installed from another tab...
+}
+
 function dothings() {
+
+
+    if (window.chrome && chrome.webstore && chrome.webstore.onInstallStageChanged) {
+        chrome.webstore.onInstallStageChanged.addListener(function(evt) {
+            console.log('onInstallStageChanged',evt)
+        })
+    }
+    if (window.chrome && chrome.webstore && chrome.webstore.onDownloadProgress) {
+        chrome.webstore.onDownloadProgress.addListener(function(evt) {
+            console.log('onDownloadProgress',evt)
+        })
+    }
+
 
     document.getElementById('click-install').addEventListener('click',function(evt) {
         var url = "https://chrome.google.com/webstore/detail/" + jstorrent_lite_id
         console.log('webstore url', url)
         chrome.webstore.install(url,
-                                oninstallresult,                                                                                                               oninstallresult)
+                                oninstallsuccess,
+                                oninstallfail)
+        // start polling to see if they installed in the other tab ...
+        window.checkInstalledInterval = setInterval( checkInstalled, 200 )
     })
 
 
