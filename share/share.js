@@ -151,7 +151,6 @@ function dothings() {
         
     }
 
-
     if (window.chrome && chrome.webstore && chrome.webstore.onInstallStageChanged) {
         chrome.webstore.onInstallStageChanged.addListener(function(evt) {
             console.log('onInstallStageChanged',evt)
@@ -160,7 +159,7 @@ function dothings() {
     }
     if (window.chrome && chrome.webstore && chrome.webstore.onDownloadProgress) {
         chrome.webstore.onDownloadProgress.addListener(function(evt) {
-            console.log('onDownloadProgress',evt)
+            //console.log('onDownloadProgress',evt)
             document.getElementById('install-status-width').style.width = (evt * 100) + '%'
         })
     }
