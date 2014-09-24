@@ -69,7 +69,7 @@ function navigateBackMaybe() {
         notify('Navigating back in ' + delay + ' s')
         setTimeout( function() {
             notify('Navigating back...')
-            //history.back()
+            history.back()
         }, delay * 1000 )
     } else {
         notify("All done! Check the JSTorrent window for progress.")
