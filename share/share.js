@@ -63,12 +63,17 @@ function notify(msg) {
 }
 
 function navigateBackMaybe() {
-    var delay = 1
-    notify('navigating back in ' + delay + ' s')
-    setTimeout( function() {
-        notify('navigating back...')
-        //history.back()
-    }, delay * 1000 )
+    var delay = 2
+
+    if (history.length > 1) {
+        notify('Navigating back in ' + delay + ' s')
+        setTimeout( function() {
+            notify('Navigating back...')
+            //history.back()
+        }, delay * 1000 )
+    } else {
+        notify("All done! Check the JSTorrent window for progress.")
+    }
 }
 
 function oninstallsuccess(result) {
@@ -100,7 +105,7 @@ function showInstallButton() {
 }
 
 function onaddresponse(result) {
-    notify('onaddresponse')
+    notify('Torrent Added')
     console.log('onaddresponse',result)
     if (result.handled) {
         navigateBackMaybe()
@@ -115,12 +120,12 @@ function doadd(result) {
     }
 
     if (result.full) {
-        notify('have jstorrent full')
+        notify('Sending torrent to JSTorrent')
         // simply add to full i guess...
         // and then navigate back?
         chrome.runtime.sendMessage( jstorrent_id, msg, onaddresponse )
     } else if (result.lite) {
-        notify('have jstorrent lite')
+        notify('Sending torrent to JSTorrent Lite')
         chrome.runtime.sendMessage( jstorrent_lite_id, msg, onaddresponse )
         // simply add to lite i guess
     } else {
@@ -134,8 +139,8 @@ function installChecked(result) {
         // possibly just old version, because we only get here if sendMessage was present...
         showInstallButton()
     } else {
-        notify('sending message to jstorrent!')
-        var delay = 2
+        notify('Loading JSTorrent')
+        var delay = 1
         setTimeout( doadd.bind(this,result), delay * 1000 )
     }
 
@@ -160,7 +165,7 @@ function tryadd() {
         notify('You need the chrome browser for this to work. But here is the magnet link anyway')
         showmag()
     } else if (chrome.runtime && chrome.runtime.sendMessage) {
-        notify("sendMessage present (an app is installed)")
+        notify("Found JSTorrent")
 
         chrome.runtime.sendMessage( jstorrent_id, { command: 'checkInstalled' }, function(response) {
             console.log('checkInstalled result from jstorrent',response)
