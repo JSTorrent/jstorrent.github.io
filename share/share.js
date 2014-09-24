@@ -88,7 +88,6 @@ function oninstallsuccess(result) {
     
 }
 function oninstallfail(result) {
-    clearInterval(window.checkInstalledInterval)
     console.log('oninstallfail',result)
     // return everything back to beginning
     resetthings()
@@ -155,7 +154,13 @@ function showmag() {
 }
 
 function checkInstalled() {
-    console.log('installed ?')
+    // check out-of-band install
+    //console.log('installed ?')
+    if (window.chrome && chrome.runtime && chrome.runtime.sendMessage) {
+        clearInterval(window.checkInstalledInterval)
+        notify("App Installed")
+        oninstallsuccess()
+    }
     // check if installed from another tab...
 }
 
@@ -223,13 +228,16 @@ function dothings() {
                                 oninstallsuccess,
                                 oninstallfail)
         // start polling to see if they installed in the other tab ...
-        //window.checkInstalledInterval = setInterval( checkInstalled, 200 )
+        
         document.getElementById('install-status').style.display='block'
         document.getElementById('install-div').style.display='none'
         evt.preventDefault()
 
-        document.getElementById('install-status-text').innerText = 'Click "Add" in the dialog to install the app'
+        document.getElementById('install-status-text').innerText = 'Click "Add" in the Popup dialog'
     })
+
+
+    window.checkInstalledInterval = setInterval( checkInstalled, 200 )
 
     tryadd()
 }
