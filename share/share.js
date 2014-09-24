@@ -74,6 +74,13 @@ function navigateBackMaybe() {
 function oninstallsuccess(result) {
     clearInterval(window.checkInstalledInterval)
     console.log('oninstallsuccess',result)
+    document.getElementById('install-status-text').innerText = 'Install complete'
+    setTimeout( function() {
+        document.getElementById('install-status').style.display='none'
+        document.getElementById('install-div').style.display='none'
+        tryadd()
+    }, 1000)
+    
 }
 function oninstallfail(result) {
     clearInterval(window.checkInstalledInterval)
@@ -147,6 +154,38 @@ function checkInstalled() {
     // check if installed from another tab...
 }
 
+function tryadd() {
+    if (! window.chrome) {
+        // not chrome, no chance of working
+        notify('You need the chrome browser for this to work. But here is the magnet link anyway')
+        showmag()
+    } else if (chrome.runtime && chrome.runtime.sendMessage) {
+        notify("sendMessage present (an app is installed)")
+
+        chrome.runtime.sendMessage( jstorrent_id, { command: 'checkInstalled' }, function(response) {
+            console.log('checkInstalled result from jstorrent',response)
+            if (response === undefined) {
+                // not installed
+                chrome.runtime.sendMessage( jstorrent_lite_id, { command: 'checkInstalled' }, function(response2) {
+                    console.log('checkInstalled result from jstorrent lite',response2)
+                    if (response2 === undefined) {
+                        installChecked({lite:false,full:false})
+                    } else {
+                        installChecked({lite:true,full:false})
+                    }
+                })
+            } else {
+                installChecked({full:true})
+            }
+        })
+        // try to send message to JSTorrent, or JSTorrent Lite 
+    } else {
+        // app is not installed, but could be
+        showInstallButton()
+    }
+
+}
+
 function dothings() {
     if (parsed.magnet_uri) {
         window.parsed_magnet = parse_magnet(parsed.magnet_uri)
@@ -187,36 +226,7 @@ function dothings() {
         document.getElementById('install-status-text').innerText = 'Click "Add" in the dialog to install the app'
     })
 
-
-
-    if (! window.chrome) {
-        // not chrome, no chance of working
-        notify('You need the chrome browser for this to work. But here is the magnet link anyway')
-        showmag()
-    } else if (chrome.runtime && chrome.runtime.sendMessage) {
-        notify("sendMessage present (an app is installed)")
-
-        chrome.runtime.sendMessage( jstorrent_id, { command: 'checkInstalled' }, function(response) {
-            console.log('checkInstalled result from jstorrent',response)
-            if (response === undefined) {
-                // not installed
-                chrome.runtime.sendMessage( jstorrent_lite_id, { command: 'checkInstalled' }, function(response2) {
-                    console.log('checkInstalled result from jstorrent lite',response2)
-                    if (response2 === undefined) {
-                        installChecked({lite:false,full:false})
-                    } else {
-                        installChecked({lite:true,full:false})
-                    }
-                })
-            } else {
-                installChecked({full:true})
-            }
-        })
-        // try to send message to JSTorrent, or JSTorrent Lite 
-    } else {
-        // app is not installed, but could be
-        showInstallButton()
-    }
+    tryadd()
 }
 
 
