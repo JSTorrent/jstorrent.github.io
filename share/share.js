@@ -78,12 +78,18 @@ function oninstallsuccess(result) {
 function oninstallfail(result) {
     clearInterval(window.checkInstalledInterval)
     console.log('oninstallfail',result)
+    // return everything back to beginning
+    resetthings()
+}
+
+function resetthings() {
+    document.getElementById('install-status').style.display='none'
+    document.getElementById('install-div').style.display='block'
 }
 
 function showInstallButton() {
-    notify('showInstallButton')
+    //notify('showInstallButton')
     document.getElementById('install-div').style.display = 'block'
-
 }
 
 function onaddresponse(result) {
@@ -174,6 +180,7 @@ function dothings() {
         // start polling to see if they installed in the other tab ...
         //window.checkInstalledInterval = setInterval( checkInstalled, 200 )
         document.getElementById('install-status').style.display='block'
+        document.getElementById('install-div').style.display='none'
         evt.preventDefault()
     })
 
