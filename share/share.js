@@ -153,6 +153,7 @@ function dothings() {
 
         if (parsed_magnet.dn) {
             document.title = parsed_magnet.dn + ' torrent download'
+            //document.getElementById('file-name').innerText = escape(parsed_magnet.dn)
         }
         
     }
@@ -182,6 +183,8 @@ function dothings() {
         document.getElementById('install-status').style.display='block'
         document.getElementById('install-div').style.display='none'
         evt.preventDefault()
+
+        document.getElementById('install-status-text').innerText = 'Click "Add" in the dialog to install the app'
     })
 
 
