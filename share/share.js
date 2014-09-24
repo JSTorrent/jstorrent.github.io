@@ -236,8 +236,11 @@ function dothings() {
         document.getElementById('install-status-text').innerText = 'Click "Add" in the Popup dialog'
     })
 
-
-    window.checkInstalledInterval = setInterval( checkInstalled, 200 )
+    if (window.chrome && chrome.runtime && chrome.runtime.sendMessage) {
+        
+    } else {
+        window.checkInstalledInterval = setInterval( checkInstalled, 200 )
+    }
 
     tryadd()
 }
