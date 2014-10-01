@@ -79,6 +79,7 @@ function navigateBackMaybe() {
 function oninstallsuccess(result) {
     clearInterval(window.checkInstalledInterval)
     console.log('oninstallsuccess',result)
+    ga('send','event','oninstall-success')
     document.getElementById('install-status-text').innerText = 'Install complete'
     setTimeout( function() {
         document.getElementById('install-status').style.display='none'
@@ -89,6 +90,7 @@ function oninstallsuccess(result) {
 }
 function oninstallfail(result) {
     console.log('oninstallfail',result)
+    ga('send','event','oninstall-fail')
     // return everything back to beginning
     resetthings()
 }
@@ -107,6 +109,7 @@ function onaddresponse(result) {
     notify('Torrent Added')
     console.log('onaddresponse',result)
     if (result.handled) {
+        ga('send','event','onaddresponse-handled')
         navigateBackMaybe()
     }
 }
@@ -119,11 +122,13 @@ function doadd(result) {
     }
 
     if (result.full) {
+        ga('send','event','doadd-full')
         notify('Sending torrent to JSTorrent')
         // simply add to full i guess...
         // and then navigate back?
         chrome.runtime.sendMessage( jstorrent_id, msg, onaddresponse )
     } else if (result.lite) {
+        ga('send','event','doadd-lite')
         notify('Sending torrent to JSTorrent Lite')
         chrome.runtime.sendMessage( jstorrent_lite_id, msg, onaddresponse )
         // simply add to lite i guess
@@ -222,6 +227,7 @@ function dothings() {
 
 
     document.getElementById('click-install').addEventListener('click',function(evt) {
+        ga('send','event','clickInstall')
         var url = "https://chrome.google.com/webstore/detail/" + jstorrent_lite_id
         console.log('webstore url', url)
         chrome.webstore.install(url,
