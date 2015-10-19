@@ -115,6 +115,11 @@ function onaddresponse(result) {
 }
 
 function doadd(result) {
+
+    if (! parsed.magnet_uri) {
+        parsed.magnet_uri = 'magnet:?xt=urn:btih:' + parsed.hash
+    }
+    
     var msg = {
         command: 'add-url',
         url: parsed.magnet_uri,
