@@ -40,7 +40,7 @@ function parse_location_hash() {
         var kv = parts[i].split('=')
         args[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1])
     }
-    console.log(args)
+    console.log('location hash args',args)
     if (navigator.userAgent.match(/chrome/i)) {
         //document.getElementById('info').innerText = JSON.stringify( args )
     } else {

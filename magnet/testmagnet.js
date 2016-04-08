@@ -35,6 +35,7 @@ function onMessage(evt) {
 ctr = 0
 function status(msg) {
     ctr++
+    console.log("STATUS",ctr,msg)
     document.getElementById('status').innerText = ctr + ' ' + msg
 }
 
@@ -44,7 +45,7 @@ function testMagnetHandler() {
     //iframe.width=1
     //iframe.height=1
     //iframe.style="border:0px"
-    iframe.style="display:none"
+    //iframe.style="display:none"
     iframe.src = testmagnet
     function onload(evt) {
         clearTimeout(timeout)
@@ -62,11 +63,11 @@ function testMagnetHandler() {
         } else {
             status("NO!!!!!! NOT SETUP!")
         }
-        iframe.parentNode.removeChild(iframe)
+        //iframe.parentNode.removeChild(iframe)
     }
     function ontimeout(evt) {
         status("NO! (timeout) NOT SETUP!")
-        iframe.parentNode.removeChild(iframe)
+        //iframe.parentNode.removeChild(iframe)
     }
     iframe.onload = onload
     document.body.appendChild(iframe)

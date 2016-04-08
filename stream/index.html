@@ -1,10 +1,21 @@
-<html><head><title>JSTorrent Media Player</title></head>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>JSTorrent Media Player</title>
+  </head>
 <body>
+<h5 style="padding:0px; margin:0px;"><a href="http://jstorrent.com"><img src="/images/JS-LOGO-1x.png" width="92" height="25"></a><span id="title-lite" style="display:none">Lite</span></h5>
 
-        <h5 style="padding:0px; margin:0px;"><img src="js-mini-logo.png" alt="JSTorrent" /><span id="title-lite" style="display:none">Lite</span></h5>
-<p>JSTorrent Streaming Media Player (beta)</p>
-<canvas id="canvas" width="720" height="16"></canvas>
-<canvas id="rangecanvas" width="720" height="16"></canvas>
+
+<p>JSTorrent Streaming Media Player <span style="font-size:150%; font-weight:bold">(beta)</span></p>
+<div>
+  <canvas id="canvas" width="720" height="16"></canvas> (current playback)
+</div>
+<div>                                                                     
+  <canvas id="rangecanvas" width="720" height="16"></canvas> (downloaded)
+</div>
+                                                                                    
 <br />
 <div id="container"></div>
 <!--script src="/package/js/deps/underscore.js"></script-->
@@ -27,6 +38,9 @@ which is slower.<p>
 <p>If you seek to a portion of the file that is not yet downloaded, it will prioritize downloading from that area. Please note that this feature is new and in beta. It can take a while for the file to be ready for streaming, and you may need to manually pause it so that the <span style="color:0a0">green</span> downloaded bar has downloaded enough data.</p>
 
 <p>Also, for HD videos, your computer likely will not be fast enough to download and play the video at the same time.</p>
+
+
+<p>Want to play this on your Chromecast? You can use <a href="https://www.mp4cast.com" target="_blank">MP4Cast</a></p>
 
 </body>
 </html>
