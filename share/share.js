@@ -30,8 +30,12 @@ function parse_magnet(url) {
 
 function parse_location_hash() {
     var hash = window.location.hash.slice(1,window.location.hash.length)
+    if (hash.length == 0) {
+        return {}
+    }
     var parts = hash.split('&')
     var args = {}
+
     for (var i=0; i<parts.length; i++) {
         var kv = parts[i].split('=')
         args[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1])
@@ -66,7 +70,6 @@ function navigateBackMaybe() {
     var countdown = delay
     getel('status-done').style.display=''
     getel('loadingIcon').style.display='none'
-
     if (history.length > 1) {
         getel('status-done').innerText = 'Navigating back in ' + delay + ' s'
 
@@ -186,6 +189,11 @@ function checkInstalled() {
 }
 
 function tryadd() {
+    if (! window.parsed_magnet) {
+        getel('loadingIcon').style.display='none'
+        notify("No magnet link found in URL")
+        return
+    }
     if (! window.chrome) {
         // not chrome, no chance of working
         notify('You need the chrome browser for this to work. But here is the magnet link anyway')
@@ -220,6 +228,7 @@ function tryadd() {
 
 function dothings() {
     if (parsed.magnet_uri) {
+
         window.parsed_magnet = parse_magnet(parsed.magnet_uri)
 
         if (parsed_magnet.dn) {
@@ -229,6 +238,8 @@ function dothings() {
             
         }
         
+    } else {
+        window.parsed_magnet = null
     }
 
     if (window.chrome && chrome.webstore && chrome.webstore.onInstallStageChanged) {
@@ -275,10 +286,9 @@ function ondom() {
     domloaded = true
 
     window.parsed = parse_location_hash()
-    if (parsed.magnet_uri && parsed.magnet_uri == 'magnet:?testRegistered') {
+    if (parsed && parsed.magnet_uri == 'magnet:?testRegistered') {
         return // we detect iframe location from another frame
     }
-    
 
     dothings()
 }
