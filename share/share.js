@@ -52,8 +52,6 @@ function parse_location_hash() {
     return args
 }
 
-window.parsed = parse_location_hash()
-
 function notify(msg) {
     console.log('notify:',msg)
     var p = document.createElement('p')
@@ -63,6 +61,7 @@ function notify(msg) {
 }
 
 function navigateBackMaybe() {
+    return
     var delay = 2
 
     if (history.length > 1) {
@@ -256,5 +255,17 @@ function dothings() {
     tryadd()
 }
 
+var domloaded = false
+function ondom() {
+    domloaded = true
 
-dothings()
+    window.parsed = parse_location_hash()
+    if (parsed.magnet_uri && parsed.magnet_uri == 'magnet:?testRegistered') {
+        return // we detect iframe location from another frame
+    }
+    
+
+    dothings()
+}
+
+document.addEventListener("DOMContentLoaded",ondom)
