@@ -13,7 +13,7 @@ var handlerPath = "/share/"
 var handlerArgument = "#magnet_uri="
 var handler
 var handlerFullUrl = window.location.origin + handlerPath + handlerArgument
-var Protocol = "bitcoin"
+var Protocol = "magnet"
 var ARGS = [Protocol,
             handlerFullUrl + "%s", //"http://jstorrent.com/share/#magnet_uri=%s",
             "JSTorrent"]
@@ -110,7 +110,6 @@ function testMagnetHandler2() {
     
     iframe.contentWindow.addEventListener('message', function(evt){console.log('message from iframe content window',evt)})
     console.log('iframe contentwindow:',iframe.contentWindow)
-
 }
 function clearSetupMagnetHandler() {
     clearMagnetHandler()

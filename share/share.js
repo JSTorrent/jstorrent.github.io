@@ -59,13 +59,25 @@ function notify(msg) {
     p.innerText = msg
     s.insertBefore( p, s.firstChild )
 }
+function getel(id) { return document.getElementById(id) }
 
 function navigateBackMaybe() {
-    return
-    var delay = 2
+    var delay = 5
+    var countdown = delay
+    getel('status-done').style.display=''
+    getel('loadingIcon').style.display='none'
 
     if (history.length > 1) {
-        notify('Navigating back in ' + delay + ' s')
+        getel('status-done').innerText = 'Navigating back in ' + delay + ' s'
+
+        setInterval( function() {
+            countdown--
+            if (countdown >= 0) {
+                getel('status-done').innerText = 'Navigating back in ' + countdown + ' s'
+            }
+        }, 1000)
+
+        
         setTimeout( function() {
             notify('Navigating back...')
             history.back()
@@ -127,13 +139,13 @@ function doadd(result) {
 
     if (result.full) {
         ga('send','event','doadd-full')
-        notify('Sending torrent to JSTorrent')
+        notify('Sending Torrent to JSTorrent')
         // simply add to full i guess...
         // and then navigate back?
         chrome.runtime.sendMessage( jstorrent_id, msg, onaddresponse )
     } else if (result.lite) {
         ga('send','event','doadd-lite')
-        notify('Sending torrent to JSTorrent Lite')
+        notify('Sending Torrent to JSTorrent Lite')
         chrome.runtime.sendMessage( jstorrent_lite_id, msg, onaddresponse )
         // simply add to lite i guess
     } else {
@@ -143,11 +155,12 @@ function doadd(result) {
 
 function installChecked(result) {
     if (! result.full && ! result.lite) {
-        notify('jstorrent not installed! show install button')
+        notify('JSTorrent is not installed!')
+        getel('loadingIcon').style.display='none'
         // possibly just old version, because we only get here if sendMessage was present...
         showInstallButton()
     } else {
-        notify('Loading JSTorrent')
+        notify('Starting JSTorrent')
         var delay = 1
         setTimeout( doadd.bind(this,result), delay * 1000 )
     }
@@ -158,8 +171,7 @@ function showmag() {
     var mag = document.getElementById('magnet-link')
     var magdiv = document.getElementById('magnet-div')
     mag.href = parsed.magnet_uri
-    magdiv.style.display = 'inline'
-
+    magdiv.style.display = ''
 }
 
 function checkInstalled() {
@@ -179,7 +191,8 @@ function tryadd() {
         notify('You need the chrome browser for this to work. But here is the magnet link anyway')
         showmag()
     } else if (chrome.runtime && chrome.runtime.sendMessage) {
-        notify("Found JSTorrent")
+        showmag()
+        notify("Looking for JSTorrent")
 
         chrome.runtime.sendMessage( jstorrent_id, { command: 'checkInstalled' }, function(response) {
             console.log('checkInstalled result from jstorrent',response)
@@ -211,7 +224,9 @@ function dothings() {
 
         if (parsed_magnet.dn) {
             document.title = parsed_magnet.dn + ' torrent download'
-            //document.getElementById('file-name').innerText = escape(parsed_magnet.dn)
+            console.log('file name:',parsed_magnet.dn)
+            document.getElementById('file-name').innerText = parsed_magnet.dn[0]
+            
         }
         
     }

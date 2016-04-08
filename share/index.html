@@ -1,5 +1,6 @@
 <html>
-<head>
+  <head>
+    <meta charset="utf-8">
 <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/abmohcnlldaiaodkpacnldcdnjjgldfh"> 
 
 <script>
@@ -30,16 +31,56 @@
 <!-- End Inspectlet Embed Code -->
 
 
+<style>
+      #content {
+      background-color: rgb(252,252,252);
+      border: 1px solid #aaa;
+      padding:1em;
+      margin:1em;
+      }
+
+  [data-loader]
+{
+    margin: 8px;
+}
+[data-loader='circle-side']
+{
+    position: relative;
+
+    width: 25px;
+    height: 25px;
+    animation: circle infinite .75s linear;
+    border: 2px solid #fff;
+    border-top-color: rgba(0, 0, 0, .2);
+    border-right-color: rgba(0, 0, 0, .2);
+    border-bottom-color: rgba(0, 0, 0, .2);
+    border-radius: 100%;
+}
+@keyframes circle
+{
+    0%
+    {
+        -webkit-transform: rotate(0);
+    }
+    100%
+    {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+  </style>
+
 </head>
 <body>
 
 <div style="height:400px; overflow:hidden">
+  <a href="http://jstorrent.com"><img src="/images/JS-LOGO-2x.png" width="278" height="75"></a>
+<!--img alt="JSTorrent" src="../images/JS-LOGO-1x.png"></img-->
 
-<img alt="JSTorrent" src="../images/JS-LOGO-1x.png"></img>
+    <div id="content">
 
-<div id="magnet-div">
-<a style="display:none" href="#" id="magnet-link">magnet link</a>
-</div>
+
+<div id="loadingIcon" data-loader="circle-side"></div>
 
 <div id="install-status" style="display:none">
   <span id="install-status-text">install progress</span>
@@ -50,27 +91,39 @@
 </div>
 
 
-<div id="install-div" style="display:none">
-<a id="click-install" href="#">Install JSTorrent (free)</a>
-<br />
-In order to download <span id="file-name">the file<span>, you need to install the JSTorrent Chrome app (free).
+<div id="install-div" style="display:none;">
+
+  <a id="click-install" href="#">Install JSTorrent (free)</a>
+
+  <div>
+    <span>To download </span>
+    <span id="file-name">the file</span>,
+    <span> you need to install the JSTorrent Chrome App (free).</span>
+  </div>
+
 </div>
 
 <span id="info"></span>
+<div id="status-done"></div>
 <span id="status"></span>
 
 <script src="share.js"></script>
 
-<input id="postAMessage" type="button" value="post a message" />
+<div style="display:none" id="magnet-div">
+  <hr  />
+<a href="#" id="magnet-link"><img src="/images/torrent_magnet_link.png" width="12" height="12">Magnet Link</a>
+</div>
+
+
 
 </div>
 
-<div id="footer" style="width:50%">
+<div id="footer" style="width:50%;">
 <span style="font-size:80%">
-JSTorrent is an open source BitTorrent client for Chrome that works on any computer that can run Google Chrome. It is fast and secure. <a href="http://jstorrent.com">Learn more about JSTorrent</a>
+JSTorrent is a Torrent client for Chrome that works on any computer that can run Google Chrome. It is fast and secure. <a href="http://jstorrent.com">Learn more about JSTorrent</a>
 </span>
 </div>
-
+</div>
 
 </body>
 </html>
