@@ -233,7 +233,16 @@ function dothings() {
         parsed_magnet = parse_magnet(parsed.magnet_uri)
 
         if (parsed_magnet && parsed_magnet.jstwn) {
-            window.name = parsed_magnet.jstwn
+            var a = document.createElement('a')
+            a.href = document.referrer
+            var result = {}
+            if (a.origin == window.location.origin) {
+                result.success = true
+                result.jstwn = parsed_magnet.jstwn
+            } else {
+                result.error = true
+            }
+            window.name = JSON.stringify(result)
             history.back()
             return
         }

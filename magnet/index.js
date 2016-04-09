@@ -7,13 +7,17 @@ function ondom() {
         })
     })
 
-    if (window.name == 'tml') {
-        console.log('it looks setup.')
-        window.name = ''
-        //getel('setup').classList.add('fadeOut')
-        getel('setup').style.visibility = 'hidden'
-        getel('allgood').style.display='block'
-        //getel('allgood').classList.add('fadeIn')
+    if (window.name) {
+        var result = JSON.parse(window.name)
+        console.log('got window.name result',result)
+        if (result && result.jstwn == 'tml') {
+            console.log('it looks setup.')
+            window.name = ''
+            //getel('setup').classList.add('fadeOut')
+            getel('setup').style.visibility = 'hidden'
+            getel('allgood').style.display='block'
+            //getel('allgood').classList.add('fadeIn')
+        }
     }
     
 }
