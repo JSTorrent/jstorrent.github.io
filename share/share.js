@@ -63,13 +63,6 @@ function notify(msg) {
     p.innerText = msg
     s.insertBefore( p, s.firstChild )
 }
-function notifyHTML(msg) {
-    console.log('notify:',msg)
-    var p = document.createElement('p')
-    var s = document.getElementById('status')
-    p.innerHTML = msg
-    s.insertBefore( p, s.firstChild )
-}
 function getel(id) { return document.getElementById(id) }
 
 function navigateBackMaybe() {
@@ -198,7 +191,7 @@ function checkInstalled() {
 function tryadd() {
     if (! window.parsed_magnet) {
         getel('loadingIcon').style.display='none'
-        notifyHTML('No magnet link found in URL. <a href="http://jstorrent.com/magnet">Setup JSTorrent Magnet link handling</a>')
+        notify("No magnet link found in URL")
         return
     }
     if (! window.chrome) {
@@ -239,6 +232,12 @@ function dothings() {
 
         parsed_magnet = parse_magnet(parsed.magnet_uri)
 
+        if (parsed_magnet && parsed_magnet.jstwn) {
+            window.name = parsed_magnet.jstwn
+            history.back()
+            return
+        }
+        
         if (parsed_magnet && parsed_magnet.dn) {
             document.title = parsed_magnet.dn + ' torrent download'
             console.log('file name:',parsed_magnet.dn)
@@ -251,7 +250,7 @@ function dothings() {
 
     if (! parsed_magnet) {
         getel('loadingIcon').style.display='none'
-        notifyHTML('No magnet link found in URL. <a href="http://jstorrent.com/magnet">Setup JSTorrent Magnet link handling</a>')
+        notify("No magnet link found in URL")
         return
     }
 

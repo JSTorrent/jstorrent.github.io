@@ -21,29 +21,62 @@
   <body>
     <a href="http://jstorrent.com"><img src="/images/JS-LOGO-2x.png" width="278" height="75"></a>
     <div id="content">
-      <h3 style="margin-top:0.5em">Magnet link setup</h3>
 
+      <div id="allgood">
+        <h3>Good news!</h3>
+
+        <p>JSTorrent is setup to handle magnet links.</p>
+
+        <p>Now go and find some!</p>
+
+        <p><a href="https://www.google.com/search?q=what+are+magnet+links">Learn more about magnet links</a></p>
+
+      <div class="equation">
+        <img src="/images/js-64.png" width="32" height="32">
+        <span> + </span>
+        <img src="/images/torrent_magnet_link.png">
+        <span> = </span>
+        <span class="smiley">😃</span>
+      </div>
+
+      </div>
+
+      
+      <div id="setup">
+      <h3 style="margin-top:0.5em">Magnet link setup</h3>
 
 
       <img src="/images/jstorrent-urlbar.png" style="width:488px; height:72px">
 
       <ol>
-        <li>Look for the icon in your URL bar:       <img class="hvr-pop" style="width:24px; height:24px;" src="/images/protocolhandler.svg"> </li>
+        <li>Look for the icon in your URL bar:
+          <span style="margin-left:4px; position:absolute"><img class="hvr-pop" style="width:24px; height:24px;" src="/images/protocolhandler.svg"></span>
+
+
+        </li>
 
         <li>Click it, click "Allow"</li>
         <li>Done!
-          (<a href="magnet:?xt=urn:btih:0000000000000000000000000000000000000000&dn=Test.Torrent.Magnet.Link&start=0"><img src="/images/torrent_magnet_link.png" style="width:12px;height:12px;margin-right:1px">Test it</a>)
+          (<a class="magnet" href="magnet:?xt=urn:btih:0000000000000000000000000000000000000000&dn=Test.Torrent.Magnet.Link&start=0&jstwn=tml"><img src="/images/torrent_magnet_link.png" style="width:12px;height:12px;margin-right:1px">Test it</a>)
         </li>
 
 
       </ol>
 
+      <!--h3 style="margin-top:1.5em">Trouble?</h3-->
 
-      <h3>Trouble?</h3>
+      <br />
+
+<div class="cps">
+      <p>Trouble?</p>
+      
       <p>Don't see it? Go to <span class="mono">chrome://settings/handlers</span>, make sure "<span class="font-family:monospace">magnet:</span>" is not ignored (then reload the page).</p>
-      <p>Maybe it already works?           (<a href="magnet:?xt=urn:btih:0000000000000000000000000000000000000000&dn=Test.Torrent.Magnet.Link&start=0"><img src="/images/torrent_magnet_link.png" style="width:12px;height:12px;margin-right:1px">Test it</a>) </p>
+      <p>Maybe it already works?           (<a class="magnet" href="magnet:?xt=urn:btih:0000000000000000000000000000000000000000&dn=Test.Torrent.Magnet.Link&start=0&jstwn=tml"><img src="/images/torrent_magnet_link.png" style="width:12px;height:12px;margin-right:1px">Test it</a>) </p>
+</div>
 
+      </div>
     </div>
+      
     <script src="index.js"></script>
 
     <div id="footer" style="margin-left: 1em; width:390px;">

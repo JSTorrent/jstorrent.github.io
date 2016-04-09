@@ -232,6 +232,12 @@ function dothings() {
 
         parsed_magnet = parse_magnet(parsed.magnet_uri)
 
+        if (parsed_magnet && parsed_magnet.jstwn) {
+            window.name = parsed_magnet.jstwn
+            history.back()
+            return
+        }
+        
         if (parsed_magnet && parsed_magnet.dn) {
             document.title = parsed_magnet.dn + ' torrent download'
             console.log('file name:',parsed_magnet.dn)
