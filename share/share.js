@@ -226,22 +226,29 @@ function tryadd() {
 
 }
 
+window.parsed_magnet = null
 function dothings() {
     if (parsed.magnet_uri) {
 
-        window.parsed_magnet = parse_magnet(parsed.magnet_uri)
+        parsed_magnet = parse_magnet(parsed.magnet_uri)
 
-        if (parsed_magnet.dn) {
+        if (parsed_magnet && parsed_magnet.dn) {
             document.title = parsed_magnet.dn + ' torrent download'
             console.log('file name:',parsed_magnet.dn)
             document.getElementById('file-name').innerText = parsed_magnet.dn[0]
-            
         }
         
     } else {
-        window.parsed_magnet = null
+        parsed_magnet = null
     }
 
+    if (! parsed_magnet) {
+        getel('loadingIcon').style.display='none'
+        notify("No magnet link found in URL")
+        return
+    }
+
+    
     if (window.chrome && chrome.webstore && chrome.webstore.onInstallStageChanged) {
         chrome.webstore.onInstallStageChanged.addListener(function(evt) {
             console.log('onInstallStageChanged',evt)
