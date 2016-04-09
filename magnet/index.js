@@ -6,7 +6,7 @@ function ondom() {
     registerHandler()
 
 function registerHandler() {
-    var handlerPath = "/share/"
+    var handlerPath = "/add/"
     var handlerArgument = "#magnet_uri="
     var handler
     var handlerFullUrl = window.location.origin + handlerPath + handlerArgument
