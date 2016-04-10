@@ -91,7 +91,24 @@ function showranges(canvas, vid) {
     }, false);
 }
 
-function decode_arguments() {
+
+function decode_arguments_hash() {
+    var hash = window.location.hash.slice(1,window.location.hash.length)
+    if (hash.length == 0) {
+        return {}
+    }
+    var parts = hash.split('&')
+    var args = {}
+
+    for (var i=0; i<parts.length; i++) {
+        var kv = parts[i].split('=')
+        args[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1])
+    }
+    console.log('location hash args',args)
+    return args
+}
+
+function decode_arguments_qp() {
     if (window.location.search) {
         var s = window.location.search.slice(1,window.location.search.length)
         var parts = s.split('&')
@@ -107,7 +124,7 @@ function decode_arguments() {
 function onload() {
     console.log('loaded')
 
-    var args = decode_arguments()
+    var args = decode_arguments_hash()
     var appid = args.id
     var message = { command:'getStatus' }
     
