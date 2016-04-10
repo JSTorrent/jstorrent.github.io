@@ -136,6 +136,8 @@ function onload() {
             if (response.webapp) {
                 var baseUrl = response.webapp.urls[0].url
                 loadVideoUrl(baseUrl, args)
+            } else {
+                showerror2('JSTorrent window is not open or web server not enabled.  Check settings and reload')
             }
         }
     })
@@ -190,9 +192,15 @@ function loadVideoUrl(baseUrl, d) {
             }
         } else if (msg.type == 'newfilerange') {
             fillinrange(rangecanvas, msg.newfilerange, msg.file.size, [0,255,16,255], true)
+        } else if (msg.error && msg.error == "window closed") {
+            showerror2("JSTorrent window was closed. Playback will stop")
+        } else {
+            console.warn('unknown message',msg)
         }
     })
     port.onDisconnect.addListener( function(msg) {
+        showerror2("JSTorrent shut down. Playback will stop.")
+        
         console.log('ondisconnect',msg)
         // xxx try to reconnect?
         window.port = null
@@ -218,13 +226,18 @@ function handleerror(evt) {
         4: 'MEDIA_ERR_NOT_SUPPORTED'
     }
     var errtxt = errors[evt.target.error.code]
-
-    document.getElementById('error').innerText = errtxt
-    document.getElementById('error').style.display = 'block'
+    showerror(errtxt)
     return errtxt
 }
 
-
+function showerror(msg) {
+    document.getElementById('error').innerText = msg
+    document.getElementById('error').style.display = 'block'
+}
+function showerror2(msg) {
+    document.getElementById('error2').innerText = msg
+    document.getElementById('error2').style.display = 'block'
+}
 
 
 function reload() { window.location.reload() }
