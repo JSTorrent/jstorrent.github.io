@@ -10,6 +10,13 @@ a {
   color: #3b4854;
 }
 
+ul.help li {
+    width:80%;
+}
+span.question {
+    font-weight:bold;
+}
+
 ul.quotes li {
     background:#eeeffa;
     font-size:90%;

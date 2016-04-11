@@ -172,6 +172,7 @@ function loadVideoUrl(baseUrl, d) {
     var rangecanvas = document.getElementById('rangecanvas')
     window.token = d.token
     window.port = chrome.runtime.connect(d.id)
+    console.log('created port to ',d.id)
     port.onMessage.addListener( function(msg) {
 
         //console.log('onmessage',msg)
