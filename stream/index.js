@@ -31,7 +31,7 @@ function clearcanvas(canvas) {
     var ctx = canvas.getContext('2d');
     var w = canvas.width
     var h = canvas.height
-    ctx.fillStyle = '#000';
+    ctx.fillStyle = '#999';
     ctx.fillRect(0, 0, w, h);
 }
 
@@ -168,7 +168,7 @@ function loadVideoUrl(baseUrl, d) {
         document.getElementById('container').innerText = 'invalid URL'
 
     }
-
+    var shutdownErrorMessage = "JSTorrent App was closed. Playback will stop soon. You need to keep it open to play."
     var rangecanvas = document.getElementById('rangecanvas')
     window.token = d.token
     window.port = chrome.runtime.connect(d.id)
@@ -184,7 +184,7 @@ function loadVideoUrl(baseUrl, d) {
                       event:'initialized'})
 
             //document.getElementById('fileinfo').innerText = JSON.stringify( msg )
-            document.getElementById('fileinfo').innerText = msg.file.path + ', ' + msg.file.size + ' bytes.'
+            document.getElementById('fileinfo').innerText = msg.file.name// + ', ' + msg.file.size + ' bytes.'
             //document.getElementById('ranges').innerText = JSON.stringify(msg.fileranges)
 
             clearcanvas(rangecanvas)
@@ -194,13 +194,13 @@ function loadVideoUrl(baseUrl, d) {
         } else if (msg.type == 'newfilerange') {
             fillinrange(rangecanvas, msg.newfilerange, msg.file.size, [0,255,16,255], true)
         } else if (msg.error && msg.error == "window closed") {
-            showerror2("JSTorrent window was closed. Playback will stop")
+            showerror2(shutdownErrorMessage)
         } else {
             console.warn('unknown message',msg)
         }
     })
     port.onDisconnect.addListener( function(msg) {
-        showerror2("JSTorrent shut down. Playback will stop.")
+        showerror2(shutdownErrorMessage)
         
         console.log('ondisconnect',msg)
         // xxx try to reconnect?
@@ -265,7 +265,7 @@ function addevents(video) {
                     state.sentplaying = true
                 }
             } else {
-                mq.innerText = 'progress' + '+++'.slice(0,state.lastrepeated%4)
+                mq.innerText = 'working' + '...'.slice(0,state.lastrepeated%4)
             }
         } else {
             state.playing = false
