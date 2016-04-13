@@ -21,7 +21,9 @@ function ondom() {
         }
     }
 
-    tryAutotest()
+    if (! navigator.userAgent.match('CrOS')) {
+        tryAutotest()
+    }
     setTimeout( function() {
         getel('setup').style.visibility='visible'
     }, 1)
