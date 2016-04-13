@@ -17,14 +17,24 @@ function ondom() {
             getel('setup').style.visibility = 'hidden'
             getel('allgood').style.display='block'
             //getel('allgood').classList.add('fadeIn')
+            return
         }
     }
-    
+
+    tryAutotest()
+    setTimeout( function() {
+        getel('setup').style.visibility='visible'
+    }, 1)
 }
 registerHandler()
 
+function tryAutotest() {
+    getel('magnet1').click()
+}
+
 function checkClickDidAnything() {
     console.log('check if it did anything...')
+    // we use two set timeouts to prevent the bubble (remove isTrusted event from click)
     setTimeout( registerHandler, 1)
 }
 
