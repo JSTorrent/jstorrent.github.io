@@ -28,7 +28,7 @@ function onload() {
 
     if (navigator.registerProtocolHandler) {
         navigator.registerProtocolHandler("magnet",
-                                          "http://jstorrent.com/share/#magnet_uri=%s",
+                                          "http://jstorrent.com/add/#magnet_uri=%s",
                                           "JSTorrent");
     }
 
