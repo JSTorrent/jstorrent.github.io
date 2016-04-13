@@ -21,7 +21,9 @@ function ondom() {
         }
     }
 
-    if (! navigator.userAgent.match('CrOS')) {
+    if (false && ! navigator.userAgent.match('CrOS')) {
+        // on windows, .click() doesnt do anything. on mac, seems to work. on chromeos, if protocol ignored system wide, opens blank tab with url
+        // so doesnt work
         tryAutotest()
     }
     setTimeout( function() {
