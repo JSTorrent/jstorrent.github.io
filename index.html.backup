@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSTorrent - BitTorrent Client for Chrome</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="icon" href="favicon.ico">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="#" class="logo">
+        <img src="images/js-256.png" alt="JSTorrent" class="logo-img">
+        <span class="logo-text">JSTorrent</span>
+      </a>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#news">News</a>
+        <a href="#help">Help</a>
+        <a href="#download">Download</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="announcement-banner">
+    <div class="container">
+      <div class="banner-header">
+        <strong>New JSTorrent is coming!</strong>
+        <span class="banner-subtitle">Rebuilt from the ground up after 10+ years</span>
+      </div>
+      <div class="banner-platforms">
+        Windows &bull; Mac &bull; Linux &bull; ChromeOS &bull; Android
+      </div>
+      <a href="https://new.jstorrent.com/comingsoon.html" class="btn btn-small">Learn More &amp; Join Waitlist</a>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="container">
+      <img src="images/js-256.png" alt="JSTorrent Logo" class="hero-logo">
+      <div class="hero-content">
+        <h1><strong>JSTorrent</strong> is a BitTorrent Client</h1>
+        <h2>for <strong>Google Chrome</strong></h2>
+        <h2>written in pure <strong>JavaScript</strong></h2>
+        <a href="https://chrome.google.com/webstore/detail/jstorrent/anhdpjpojoipgpmfanmedjghaligalgb" class="btn btn-primary" id="hero-download-btn">
+          Download from Chrome Web Store
+          <span class="btn-sub">Legacy Chrome App - ChromeOS Only - v2.4.3</span>
+        </a>
+        <p class="platform-warning" id="platform-warning" style="display: none;"></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="container">
+      <h2>About JSTorrent</h2>
+      <p>
+        JSTorrent is a BitTorrent client for Google Chrome that downloads torrent files with ease.
+        It can download torrents directly to your Downloads folder and handle large multi-gigabyte files.
+        It was designed specifically for Google ChromeOS and runs on lower-end ARM Chromebooks.
+      </p>
+
+      <div class="notice">
+        <strong>Note:</strong> Chrome Apps are being phased out by Google.
+        We're building a new JSTorrent that runs everywhere.
+        <a href="https://new.jstorrent.com/comingsoon.html">Check out the new version</a>.
+      </div>
+
+      <div class="rating-badge">
+        <span class="stars">&#9733;</span>
+        <strong>4.4</strong> (3,800+ ratings) on Chrome Web Store
+      </div>
+
+      <h3>What users say</h3>
+      <div class="quotes-grid">
+        <blockquote>"This is so worth it especially if you have a chromebook. Incredible!"</blockquote>
+        <blockquote>"Works wonderfully, only app of its kind for chrome."</blockquote>
+        <blockquote>"i like it a lot. a use it everyday on my chromebook and never had any problem. very neat app."</blockquote>
+        <blockquote>"Love this app! Use to use Utorrent on my other laptop but now I have found this app I don't need to be using my other laptop no more. Well worth the money and I would recommend it to anyone who is using a Chromebook!"</blockquote>
+        <blockquote>"definitely worth it. i'm really glad i found an app to replace uTorrent for my chromebook"</blockquote>
+        <blockquote>"Amazeballs. Working well on an Acer c720 Chromebook, nearly runs as fast as uTorrent.. Actually pretty insane to be honest, amazing app."</blockquote>
+        <blockquote>"It works great, it's easy to use."</blockquote>
+        <blockquote>"This latest version is working really well on my Chromebook. This pretty much means I am close to no longer needing my Linux laptop. Way to go jstorrent team."</blockquote>
+        <blockquote>"Love it. Makes me enjoy my new Chromebook even more."</blockquote>
+        <blockquote>"Essential app"</blockquote>
+        <blockquote>"When it seemed that Chromebook was limited to web browing and little more, JSTorrent comes in and makes it a very powerful and complete gadget. A must have to all downloaders"</blockquote>
+        <blockquote>"Was use to using utorrent before purchasing a chromebook as my primary laptop. I was happy to find that jstorrent is equally as simple and works just as well. I'm not one to buy apps, but JSTorrent is well worth the measly 2 dollars."</blockquote>
+        <blockquote>"work great on chromebook, totally a most buy if you own one, only 2 box nizzle"</blockquote>
+        <blockquote>"Greatest app ever, it easily doubles the functionality of my chromebook. I don't remember it cost any money when i got it, but i would definitely pay for it. Just as good/better than a full desktop torrent client!"</blockquote>
+        <blockquote>"I know not everyone has a chromebook and it is nice to be able to find a program that simply works, THANK YOU."</blockquote>
+      </div>
+      <p><a href="https://chrome.google.com/webstore/detail/jstorrent/anhdpjpojoipgpmfanmedjghaligalgb/reviews">Read more reviews</a></p>
+    </div>
+  </section>
+
+  <section id="news" class="section section-alt">
+    <div class="container">
+      <h2>News / Changes</h2>
+
+      <article class="changelog-entry">
+        <h3>Version 2.4.3 <span class="date">April 23, 2016</span></h3>
+        <ul>
+          <li>Add option for number of active torrents (queue functionality)</li>
+          <li>Fix bug with downloading too much data when disk is slow</li>
+          <li>Fix bug with changelog always showing sometimes</li>
+        </ul>
+      </article>
+
+      <article class="changelog-entry">
+        <h3>Version 2.4.1 <span class="date">April 13, 2016</span> <span class="badge">A Very Large Update</span></h3>
+        <ul>
+          <li>MAGNET LINK SUPPORT! (look in the options)</li>
+          <li>Increased download speed through improved peer connection handling</li>
+          <li>Fixed a number of bugs causing downloads to pause/hang</li>
+          <li>Add an action to Cast (<a href="https://www.mp4cast.com">www.mp4cast.com</a>) to Chromecast a completed file</li>
+          <li>Enable the (beta) Media stream page (look in Files tab)</li>
+          <li>Added new option "add public trackers automatically"</li>
+          <li>Added Messages tab, for detailed log/debug info</li>
+          <li>Added option to disable usage tracking</li>
+          <li>Removed "compact" view, use native minimize control instead</li>
+          <li>Add bytes/sec to peer list</li>
+          <li>Show notification when app updates</li>
+          <li>Started support for localization</li>
+          <li>Destroy the UI on minimize, restore on restore (save some memory/cpu in minimized mode)</li>
+          <li>Update package script to reduce crx size</li>
+          <li>Fix main logo for retina displays</li>
+          <li>Try to make "Open" in files tab work better</li>
+          <li>Add an action "get app" to files list</li>
+          <li>Fix reset torrent state for case where added by .torrent entry</li>
+          <li>Fix client name display</li>
+          <li>Fix help page scroll issue</li>
+          <li>Update help page</li>
+          <li>Add tooltips to options page</li>
+          <li>Fix uninstall url (links to an optional survey)</li>
+          <li>Update web server chrome</li>
+          <li>Fix drag in .torrent file</li>
+          <li>Add folder path to files list</li>
+          <li>Fix display of % complete</li>
+          <li>Show error when .torrent file wont load</li>
+          <li>Add browser permission to use browser.openTab</li>
+          <li>Replace calls to window.open with chrome.browser.openTab</li>
+          <li>Many other small misc fixes</li>
+        </ul>
+      </article>
+
+      <article class="changelog-entry">
+        <h3>Version 2.3.10 <span class="date">Jan 19, 2015</span></h3>
+        <ul>
+          <li>Fix magnet links not working</li>
+          <li>Fix UDP tracker problems</li>
+        </ul>
+      </article>
+
+      <article class="changelog-entry">
+        <h3>Version 2.3.9 <span class="date">Jan 14, 2015</span></h3>
+        <ul>
+          <li>HTTP tracker fixes</li>
+          <li>Remove deprecated pushMessaging API</li>
+        </ul>
+      </article>
+
+      <article class="changelog-entry">
+        <h3>Version 2.3.2 <span class="date">Sept 26, 2014</span></h3>
+        <ul>
+          <li>Support for being default "magnet:" protocol handler</li>
+          <li>Fix parsing trackers from .torrent files</li>
+          <li>API updates for upcoming Chrome 38</li>
+        </ul>
+      </article>
+
+      <details class="older-versions">
+        <summary>Show older versions</summary>
+
+        <article class="changelog-entry">
+          <h3>Version 2.3.0 <span class="date">Aug 8, 2014</span></h3>
+          <ul>
+            <li>Fix for base32 magnet links</li>
+            <li>Speed improvement using Web Crypto API</li>
+          </ul>
+        </article>
+
+        <article class="changelog-entry">
+          <h3>Version 2.2.9 <span class="date">June 10, 2014</span></h3>
+          <ul>
+            <li>Add ETA column</li>
+            <li>Minimized view</li>
+            <li>Use new chrome.sockets API</li>
+            <li>Ability to add custom trackers (right-click)</li>
+            <li>Better messaging for when out of free disk space</li>
+            <li>Fix utf-8 encoded text issues</li>
+            <li>Ability to remove detached storage</li>
+          </ul>
+        </article>
+
+        <article class="changelog-entry">
+          <h3>Version 2.2.6 <span class="date">Mar 9, 2014</span></h3>
+          <ul>
+            <li>Minor bugfixes having to do with handling detached storage</li>
+          </ul>
+        </article>
+
+        <article class="changelog-entry">
+          <h3>Version 2.2.2 <span class="date">Mar 7, 2014</span></h3>
+          <ul>
+            <li>Identified the cause of Fatal Disk errors, workaround implemented</li>
+            <li>New Streaming Media Player (click on "Play" in Files view)</li>
+            <li>Improved download speeds</li>
+          </ul>
+        </article>
+
+        <article class="changelog-entry">
+          <h3>Version 2.1.2 <span class="date">Feb 22, 2014</span></h3>
+          <ul>
+            <li>Improved messaging for unhealthy torrents</li>
+            <li>Fixed some add by URL bugs</li>
+            <li>Clicking on "Add" without a URL brings up file selection</li>
+            <li>Extended trial version in certain markets (Brazil)</li>
+          </ul>
+        </article>
+
+        <article class="changelog-entry">
+          <h3>Version 2.1.2 <span class="date">Feb 3, 2014</span></h3>
+          <ul>
+            <li>Fix several issues with trackers</li>
+            <li>New option (default off) to report as uTorrent</li>
+            <li>Information in Help page to give to private tracker admins</li>
+            <li>See detailed tracker error information in "Trackers" tab</li>
+            <li>Sortable columns (click on column header, note not all columns are sortable)</li>
+            <li>Improvements to setting file priority (skip file download)</li>
+            <li>Add "General Information" pane, to see detailed information about a Torrent</li>
+          </ul>
+        </article>
+
+        <article class="changelog-entry">
+          <h3>Minor release <span class="date">Jan 18, 2014</span></h3>
+          <ul>
+            <li>Miscellaneous bugfixes</li>
+          </ul>
+        </article>
+
+        <article class="changelog-entry">
+          <h3>Version 2.1 <span class="date">Jan 17, 2014</span></h3>
+          <ul>
+            <li>Ability to select which files to download</li>
+            <li>Private tracker support</li>
+            <li>New works for all public trackers</li>
+            <li>Improved UX and notifications</li>
+            <li>Added some options to the Options page: Number of peers per torrent, Prevent standby</li>
+          </ul>
+        </article>
+
+        <article class="changelog-entry">
+          <h3>Post 2.0 Releases <span class="date">Jan 21-27, 2014</span></h3>
+          <ul>
+            <li>Pushing small bugfixes reported by users. Please, if you have any problems with the program, report the issues and I will address them!</li>
+          </ul>
+        </article>
+
+        <article class="changelog-entry">
+          <h3>Version 2.0 <span class="date">Dec 19, 2013</span></h3>
+          <ul>
+            <li>Version 2.0 released with direct downloads to your disk</li>
+          </ul>
+        </article>
+      </details>
+    </div>
+  </section>
+
+  <section id="help" class="section">
+    <div class="container">
+      <h2>Help / FAQ</h2>
+
+      <p>
+        Bug reports and feature requests are welcome on the
+        <a href="https://github.com/kzahel/jstorrent">JSTorrent GitHub page</a>.
+      </p>
+
+      <div class="faq">
+        <details class="faq-item">
+          <summary>How does this work?</summary>
+          <div class="faq-answer">
+            <p>
+              Find a torrent file on the web, right click in your browser and select "Copy link address",
+              then come back to JSTorrent, paste it into the address bar on top, and click "Add".
+              Your torrent download will begin!
+            </p>
+            <p>
+              Or, simply download a ".torrent" file, and then either drag it into the window or
+              click on it in the "Files" app.
+            </p>
+            <p>
+              You can also visit <a href="http://jstorrent.com/magnet">JSTorrent.com/magnet</a> to
+              set up JSTorrent as your magnet link handler.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Why do I have to select a Download Folder?</summary>
+          <div class="faq-answer">
+            <p>
+              JSTorrent starts out with NO ACCESS to any files on your computer. You have to tell it
+              which folder(s) it has access to. This is a security feature! Most desktop software
+              has full access to your computer.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Where do the files download to?</summary>
+          <div class="faq-answer">
+            <p>
+              The first time you add a torrent, you'll be asked to select a Default Download Folder.
+              Creating a "JSTorrent" folder is the recommended setup.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>The downloaded audio/video is not working!</summary>
+          <div class="faq-answer">
+            <p>
+              The file probably has the AC3 codec, which ChromeOS does not decode. Try to get MP4 files
+              with H264 encoding, that will work best.
+            </p>
+            <p>
+              You can try using <a href="https://chrome.google.com/webstore/detail/vlc/obpdeolnggmbekmklghapmfpnfhpcndf">VLC for Chrome</a>
+              or <a href="https://chrome.google.com/webstore/detail/h265-hevc-player/dambgipgbnhmnkdolkljibpcbocimnpd">HEVC Player for Chrome</a>.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can I save to Google Drive?</summary>
+          <div class="faq-answer">
+            <p>
+              On ChromeOS, it is possible but not recommended. Saving to Google Drive means downloading
+              to your local computer then re-uploading, resulting in at least a 2x slowdown.
+              Save to internal or external disk instead.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>My torrent isn't downloading!</summary>
+          <div class="faq-answer">
+            <p>First, make sure you've selected your download directory.</p>
+            <p>
+              Check the "Trackers" tab for errors. Verify there are peers in the "Swarm" tab,
+              and check the "Peers" tab to see if you're connecting to peers.
+            </p>
+            <p>
+              If you still have issues, please report them on the
+              <a href="https://github.com/kzahel/jstorrent/issues">GitHub issue tracker</a>.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How do I skip a file or only download specific files?</summary>
+          <div class="faq-answer">
+            <p>
+              You can skip downloading files by right-clicking in the Files tab and selecting "Skip Download".
+              Use shift+click to select multiple files.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Does this work with private trackers?</summary>
+          <div class="faq-answer">
+            <p>
+              With a private tracker, download the ".torrent" file from the web browser first,
+              then load it into JSTorrent. This is because you need to be signed in and JSTorrent
+              doesn't know your login credentials.
+            </p>
+            <p>
+              Many trackers employ a "whitelist" for allowed clients. Contact your tracker's
+              administrators with this information:
+            </p>
+            <ul>
+              <li>JSTorrent reports its User-Agent as the underlying browser's User-Agent</li>
+              <li>It adds an X-User-Agent header: JSTorrent/{version}</li>
+              <li>Peer ID begins with "-JS{version}-"</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Why is it slow?</summary>
+          <div class="faq-answer">
+            <p>
+              You can increase download speed by adjusting the number of connections in settings.
+              This will use more system resources but give faster speeds.
+            </p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="download" class="section section-alt">
+    <div class="container download-section">
+      <h2>Download</h2>
+
+      <div class="download-cards">
+        <div class="download-card download-card-featured">
+          <span class="card-badge">Coming Soon</span>
+          <h3>New JSTorrent</h3>
+          <p>Runs everywhere: Windows, Mac, Linux, ChromeOS, and Android.</p>
+          <a href="https://new.jstorrent.com/comingsoon.html" class="btn btn-primary">Learn More</a>
+        </div>
+
+        <div class="download-card" id="legacy-download-card">
+          <span class="card-badge">Legacy - ChromeOS Only</span>
+          <h3>Chrome Web Store</h3>
+          <p>The original JSTorrent Chrome App. <strong>Only works on ChromeOS.</strong> Chrome Apps are deprecated on other platforms.</p>
+          <a href="https://chrome.google.com/webstore/detail/jstorrent/anhdpjpojoipgpmfanmedjghaligalgb" class="btn">Download v2.4.3</a>
+          <p class="platform-warning" id="card-platform-warning" style="display: none;"></p>
+        </div>
+
+        <div class="download-card">
+          <h3>Helper Extension</h3>
+          <p>Adds right-click menu to send torrent links directly to JSTorrent.</p>
+          <a href="https://chrome.google.com/webstore/detail/jstorrent-helper-extensio/bnceafpojmnimbnhamaeedgomdcgnbjk" class="btn">Get Extension</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Links</h2>
+      <div class="links-grid">
+        <div class="links-group">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="https://chrome.google.com/webstore/detail/jstorrent/anhdpjpojoipgpmfanmedjghaligalgb">Chrome Web Store</a></li>
+            <li><a href="http://jstorrent.com/magnet/">Magnet Link Setup</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="links-group">
+          <h3>Development</h3>
+          <ul>
+            <li><a href="https://github.com/kzahel/jstorrent">Source Code</a></li>
+            <li><a href="https://github.com/kzahel/jstorrent/issues">Issue Tracker</a></li>
+            <li><a href="https://reddit.com/r/JSTorrent">JSTorrent on Reddit</a></li>
+          </ul>
+        </div>
+        <div class="links-group">
+          <h3>About</h3>
+          <ul>
+            <li><a href="http://www.graehlarts.com/">Graehl Arts</a></li>
+            <li><a href="http://kyle.graehl.org">Kyle Graehl</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2014-2026 <a href="http://www.graehlarts.com">Graehl Arts</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Simple mobile nav toggle
+    document.querySelector('.nav-toggle').addEventListener('click', function() {
+      document.querySelector('.nav').classList.toggle('nav-open');
+      this.classList.toggle('active');
+    });
+
+    // Platform detection for legacy Chrome App
+    (function() {
+      var ua = navigator.userAgent;
+      var isChromeOS = /\bCrOS\b/.test(ua);
+      var warningText = '';
+
+      if (!isChromeOS) {
+        document.body.classList.add('not-chromeos');
+
+        if (/Android/.test(ua)) {
+          warningText = 'You\'re on Android. The new JSTorrent is coming soon!';
+        } else if (/Mac|iPhone|iPad/.test(ua)) {
+          warningText = 'You\'re on macOS/iOS. The legacy app only works on ChromeOS. Check out the new version above!';
+        } else if (/Windows/.test(ua)) {
+          warningText = 'You\'re on Windows. The legacy app only works on ChromeOS. Check out the new version above!';
+        } else if (/Linux/.test(ua)) {
+          warningText = 'You\'re on Linux. The legacy app only works on ChromeOS. Check out the new version above!';
+        } else {
+          warningText = 'The legacy app only works on ChromeOS. Check out the new version above!';
+        }
+
+        var warnings = document.querySelectorAll('.platform-warning');
+        warnings.forEach(function(el) {
+          el.textContent = warningText;
+          el.style.display = 'block';
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>
